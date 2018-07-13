@@ -1,26 +1,28 @@
 import React, { Component } from 'react'
+import Animal from './Animal'
 
 export default class AnimalList extends Component {
 
     state = {
         animals: [
-            { id: 1, name: "Bruce" },
-            { id: 2, name: "Max" },
-            { id: 3, name: "Sandy" },
-            { id: 4, name: "Kitty" },
-            { id: 5, name: "Little Bear" }
+            { id: 1, name: "Doodles", breed: "German Shepherd" },
+            { id: 2, name: "Jack", breed: "Cocker Spaniel" },
+            { id: 3, name: "Angus", breed: "Dalmatian" },
+            { id: 4, name: "Henley", breed: "Carolina Retriever" },
+            { id: 5, name: "Derkins", breed: "Pug" },
+            { id: 6, name: "Checkers", breed: "Bulldog" }
         ]
     }
 
-render() {
-    return (
-        <React.Fragment>
-            <ul>
-                {
-                    this.state.animals.map(animal => <li key={animal.id} >{animal.name}</li> )
-                }
-            </ul>
-        </React.Fragment>
-    )
-}
+    render() {
+        return (
+            <React.Fragment>
+                <ul>
+                    {
+                        this.state.animals.map(animal => < Animal key={animal.id} animal={animal} />)
+                    }
+                </ul>
+            </React.Fragment>
+        )
+    }
 }
