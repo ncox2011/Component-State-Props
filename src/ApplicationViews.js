@@ -5,6 +5,8 @@ import LocationList from './LocationList'
 import EmployeeList from './EmployeeList'
 import Animal from './Animal';
 import Login from './Login/Login'
+import Employee from './Employee'
+import Location from './Location'
 
 
 export default class ApplicationViews extends Component {
@@ -22,6 +24,9 @@ export default class ApplicationViews extends Component {
                         return <Login />
                     }
                 }} />
+                <Route path='/locationId' render={props => {
+                    return < Location location={props.location.state.location} />
+                }} />
                 <Route exact path="/animals" render={props => {
                     if (this.isAuthenticated()) {
                         return <AnimalList />
@@ -32,12 +37,15 @@ export default class ApplicationViews extends Component {
                 <Route path="/animals/:animalId" render={(props) => {
                     return <Animal animal={props.location.state.animal} />
                 }} />
-                <Route path="/employees" render={props => {
+                <Route exact path="/employees" render={props => {
                     if (this.isAuthenticated()) {
                         return <EmployeeList />
                     } else {
                         return <Login />
                     }
+                }} />
+                <Route path="/employees/:employeeId" render={(props) => {
+                    return <Employee employee={props.location.state.employee} />
                 }} />
                 <Route path="/login" component={Login} />
             </React.Fragment>
