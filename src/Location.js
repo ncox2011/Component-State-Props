@@ -17,13 +17,13 @@ if (props.hasOwnProperty("location")) {
         <div className="card" style={{width: `18rem`}}>
             <div className="card-body">
                 <h5 className="card-title">
-                    {props.location.name}
+                    {location.name}
                 </h5>
-                <p className="card-text">{props.location.title}</p>
+                <p className="card-text">{location.title}</p>
                 {
                     <Link className="card-link"
                     to={{
-                        pathname: `/${location.id}`,
+                        pathname: `/locations/${location.id}`,
                         state: { location: location }
                     }}>
                     Details

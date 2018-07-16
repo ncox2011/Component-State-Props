@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
 import Location from './Location'
+import APIHandler from './APIHandler';
+
 
 export default class LocationList extends Component {
 
     state = {
-        locations: [
-            { id: 1, name: "Nashville North" },
-            { id: 2, name: "Nashville South" }
-        ]
+        locations: []
+    }
+
+    componentDidMount () {
+        APIHandler.getLocations()
+        .then(locations => {
+            this.setState({locations: locations})
+        })
     }
 
     render() {
