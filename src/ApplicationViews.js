@@ -17,25 +17,28 @@ export default class ApplicationViews extends Component {
     render() {
         return (
             <React.Fragment>
-                <Route exact path="/" render={props => {
-                    if (this.isAuthenticated()) {
-                        return <LocationList />
-                    } else {
-                        return <Login />
-                    }
-                }} />
-                <Route path='/locationId' render={props => {
-                    return < Location location={props.location.state.location} />
+                <Route exact path="/" component={LocationList}
+                // render={props => {
+                    // if (this.isAuthenticated()) {
+                    //     return <LocationList />
+                    // } else {
+                    //     return <Login />
+                    // }
+                 />
+                <Route path='/locations/:locationId' render={banana => {
+                    return < Location location={banana.location.state.location} />
                 }} />
                 <Route exact path="/animals" render={props => {
-                    if (this.isAuthenticated()) {
+                    // if (this.isAuthenticated()) {
                         return <AnimalList />
-                    } else {
-                        return <Login />
-                    }
+                    // } else {
+                    //     return <Login />
+                    // }
                 }} />
                 <Route path="/animals/:animalId" render={(props) => {
-                    return <Animal animal={props.location.state.animal} />
+                    return <Animal animal={props.location.state.animal}>
+                    {props.location.state.animal.name}
+                    </Animal>
                 }} />
                 <Route exact path="/employees" render={props => {
                     if (this.isAuthenticated()) {
@@ -45,7 +48,9 @@ export default class ApplicationViews extends Component {
                     }
                 }} />
                 <Route path="/employees/:employeeId" render={(props) => {
-                    return <Employee employee={props.location.state.employee} />
+                    return <Employee employee={props.location.state.employee}>
+                    {props.location.state.employee.name}
+                    </Employee>
                 }} />
                 <Route path="/login" component={Login} />
             </React.Fragment>

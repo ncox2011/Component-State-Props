@@ -17,7 +17,7 @@ if (props.hasOwnProperty("employee")) {
         <div className="card" style={{width: `18rem`}}>
             <div className="card-body">
                 <h5 className="card-title">
-                    {props.employee.name}
+                    {props.children}
                 </h5>
                 <p className="card-text">{props.employee.title}</p>
                 {
