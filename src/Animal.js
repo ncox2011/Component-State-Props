@@ -19,7 +19,7 @@ if (props.hasOwnProperty("animal")) {
         <div className="card" style={{width: `18rem`}}>
             <div className="card-body">
                 <h5 className="card-title">
-                    {props.children}
+                    {props.animal.name}
                 </h5>
                 <p className="card-text">{props.animal.breed}</p>
                 {
@@ -31,7 +31,7 @@ if (props.hasOwnProperty("animal")) {
                     Details
                 </Link>
                 }
-                <a href="#">Delete</a>
+                <a href="#" onClick={() => props.checkOutAnimal(props.animal.id)}>Delete</a>
             </div>
         </div>
     )
